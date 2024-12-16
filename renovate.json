@@ -1,0 +1,37 @@
+{
+	"extends": ["config:base", ":semanticCommitTypeAll(chore)"],
+	"pinVersions": false,
+	"separateMajorMinor": false,
+	"dependencyDashboard": false,
+	"semanticCommits": "enabled",
+	"lockFileMaintenance": {
+		"enabled": true,
+		"schedule": ["before 2am"],
+		"automerge": true,
+		"automergeType": "branch"
+	},
+	"constraints": {
+		"npm": "^8.0.0"
+	},
+	"packageRules": [
+		{
+			"matchUpdateTypes": ["patch", "minor"],
+			"matchCurrentVersion": "!/^0/",
+			"groupName": "patch/minor dependencies",
+			"groupSlug": "all-non-major",
+			"automerge": true,
+			"automergeType": "branch"
+		}
+	],
+	"schedule": ["every weekday"],
+	"ignoreDeps": [
+		"crawlee",
+		"cheerio",
+		"@docusaurus/core",
+		"@docusaurus/mdx-loader",
+		"@docusaurus/module-type-aliases",
+		"@docusaurus/plugin-client-redirects",
+		"@docusaurus/preset-classic",
+		"@docusaurus/types"
+	]
+}
